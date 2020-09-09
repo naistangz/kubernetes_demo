@@ -1,11 +1,11 @@
 # Kubernetes
 
 **Contents**
--[x] [The Legacy Monolith](#)
--[x] [Microservices](#)
--[x] [Refactoring](#)
--[x] [Case Studies](#)
--[x] [Kubernetes]
+-[x] [The Legacy Monolith](#the-legacy-monolith)
+-[x] [Microservices](#microservices)
+-[x] [Refactoring](#refactoring)
+-[x] [Case Studies](#use-cases)
+-[x] [Kubernetes](#kubernetes)
 
 ## The Legacy Monolith
 > Recap - A monolith is a large, single piece of software. It runs on a single system which has to satisfy its compute, memory, storage, and networking requirements.
@@ -54,6 +54,12 @@ During upgrades, patches or migrations of the monolith application - downtimes o
 
 ## Kubernetes :rocket:
 > Recap containerisation, microservices, containers
+
+- [x] [What are containers](#what-are-containers)
+- [x] [What are microservices?](#what-are-microservices)
+- [x] [Container Images](#container-images)
+- [x] [Container Orchestration](#container-orchestration)
+
 
 ### What are containers?
 - Portable, isolated virtual environments for aplications to run without interference from other running applications.
@@ -104,9 +110,9 @@ During upgrades, patches or migrations of the monolith application - downtimes o
 - There are also managed container OaaS (orchestration as a service) solutions e.g Google Kubernetes Engine, Amazon Elastic Container Service for Kubernetes, IBM Cloud Kubernetes, etc
 
 # What is Kubernetes?
-- [x][Introduction](#) 
-- [x][Why use Kubernetes](#)
-- [x][Features of Kubernetes](#)
+- [x] [Introduction](#introduction) 
+- [x] [Why use Kubernetes](#why-container-orchestrators)
+- [x] [Features of Kubernetes](#features)
 
 ## Introduction 
 - Kubernetes comes from Greek word κυβερνήτης, meaning helmsman or ship pilot. Kubernetes is like the pilor on a ship of containers.
