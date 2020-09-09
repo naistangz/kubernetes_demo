@@ -53,7 +53,7 @@ During upgrades, patches or migrations of the monolith application - downtimes o
 
 
 ## Kubernetes :rocket:
-> Recap 
+> Recap containerisation, microservices, containers
 
 ### What are containers?
 - Portable, isolated virtual environments for aplications to run without interference from other running applications.
@@ -99,4 +99,28 @@ During upgrades, patches or migrations of the monolith application - downtimes o
 	- Allow for implementation of policies to secure access to applications running inside containers. 
 
 ## Where to deploy container orchestrators?
+- Can be deployed on infrastructure of choice - on bare metal (computer system that doesn't have OS, VM installed directly on hardware) VMs, on-premise, or cloud.
+- Kubernetes provides turnkey solutions, meaning clusters can be installed on top of cloud IaaS (infra as a service) e.g Docker, AWS EC2, GCE, IBM
+- There are also managed container OaaS (orchestration as a service) solutions e.g Google Kubernetes Engine, Amazon Elastic Container Service for Kubernetes, IBM Cloud Kubernetes, etc
+
+# What is Kubernetes?
+- [x][Introduction](#) 
+- [x][Why use Kubernetes](#)
+- [x][Features of Kubernetes](#)
+
+## Introduction 
+- Kubernetes comes from Greek word κυβερνήτης, meaning helmsman or ship pilot. Kubernetes is like the pilor on a ship of containers.
+- Also referred to as **k8s** (there are 8 characters between k and s)
+
+## Features 
+- **Automatic bin packing** - schedules containers based on resource needs, maximises utilisaiton without sacrificing availability
+- **Horizontal Scaling** - scaled manually or automatically based on CPU or custom metrics utilisation
+- **Service discovery and load balancing** - Containers receive their own IP addresses from k8 and assigned a single DNS name to a set of containers to aid in load-balancing requests across containers. 
+- **Automated rollouts and rollbacks** - rolls and rolls back application updates and configuraiton changes, constantly monitoring application's health to prevent any downtime, making apps highly available. 
+- **Secret and configuration management** - K8 manages secrets and configuration details for an application separately from the container image, to avoid re-build of respective image. 
+
+## Use cases
+- When we want to deploy containers from any environment e.g local or remote VM, bare metal, public/private/hybrid/mult-cloud setups.
+
+
 
