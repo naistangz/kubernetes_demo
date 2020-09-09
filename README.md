@@ -121,6 +121,122 @@ During upgrades, patches or migrations of the monolith application - downtimes o
 
 ## Use cases
 - When we want to deploy containers from any environment e.g local or remote VM, bare metal, public/private/hybrid/mult-cloud setups.
+- K8's architecture is modular and pluggable. Functionality can be extended by writing custom resources, operators, custom APIs, scheduling rules or plugins. 
 
+# Kubernetes Architecture 
+Kubernetes has the following components:
+	- One or more **master nodes**
+	- One or more **worker nodes**
+	- Distributed key-value store, such as **etcd**
 
+<img src="https://courses.edx.org/assets/courseware/v1/8f441b27101be805bc286e67adc671a2/asset-v1:LinuxFoundationX+LFS158x+2T2019+type@asset+block/Kubernetes_Architecture1.png" alt="Kubernetes_Architecture">
+
+## What is master node?
+- Running env for control plane 
+- Responsible for managing the state of a kubernetes cluster
+- Brain behind the operations inside cluster 
+- Control plane components are agents with different roles in the cluster's management.
+- To communicate with the cluser, users send requests to master node via CLM, Web UI, or API
+- Control plane components on the master node running controllers to regulate the state of the Kubernetes cluster
+- Runs controllers responsible to interact with underlying infrastructure of cloud provider, manage load balancing and routing. 
+
+## What is the worker node?
+- Provides running environment for client applications 
+- Applications running in containerised microservices are encapsulated in Pods, controlled by cluster control plane agents running on master node. 
+- To access applications from external world, we connect to worker nodes, not master node. 
+
+## Networking 
+- Decouple microservices rely heavily on networking in order to mimic tight-coupling in monolith architecture.
+- K8 needs to address container-to-container communication inside Pods, pod-to-pod communication, pod-to-service communication, external-to-service communication for clients to access applications in a cluster.
+- This is achieved with **network namespace** pods can talk to each via localhost
+
+## Installing Minikube
+```
+Install VirtualBox
+Install Minikube
+```
+Installing minikube
+```bash
+$ curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.0.1/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+```
+
+```
+$ minikube start
+```
+
+```
+$ minikube status
+```
+
+```
+$ minikube stop
+```
+
+Starting Minikube with CRI-O as container runtime, instead of Docker:
+
+```bash
+minikube start --container-runtime=cri-o
+minikube v1.0.1 on linux (amd64)
+```
+	
+SSHing into the Minikube's VM
+```bash
+minikube ssh 
+```
+
+Listing docker containers 
+```bash
+sudo runc list 
+```
+
+Installing kubectl on macOS
+`kubectl` is the Kubernetes Command Line Interface client to manage cluster resources and applications 
+
+```bash
+$ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+```
+or with `homebrew package manager`
+```bash
+$ brew install kubernetes-cli
+```
+
+Configuring `kubectl` file in order to access the Kubernetes cluster:
+```bash
+kubectl config view
+```
+or 
+```bash
+cat ~/.kube/config
+```
+To access cluster, the `kubectl` client needs the master node endpoint and the credentials to be able to interact with the API server running on the master node. 
+
+Gathering info about the minikube cluster:
+```bash
+kubectl cluster-info
+```
+E.g.:
+```bash
+➜  kubernetes_demo git:(master) ✗ kubectl cluster-info
+Kubernetes master is running at https://127.0.0.1:32772
+KubeDNS is running at https://127.0.0.1:32772/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+```
+
+Using the Kubernetes web-based user interface:
+```bash
+minikube dashboard
+```
+
+The `kubectl proxy` command to authenticate the API server on the master node:
+```bash
+$ kubectl proxy
+Starting to serve on 127.0.0.1:8001
+```
+
+When `kubectl proxy` is running, we can send requests to the API over the `localhost` on the proxy port 8001:
+
+```bash
+$ curl http://localhost:8001/
+```
 
