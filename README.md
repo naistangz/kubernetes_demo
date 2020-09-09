@@ -1,11 +1,11 @@
 # Kubernetes
 
 **Contents**
--[x][The Legacy Monolith](#)
--[x][Microservices](#)
--[x][Refactoring](#)
--[x][Case Studies](#)
--[x][Kubernetes]
+-[x] [The Legacy Monolith](#)
+-[x] [Microservices](#)
+-[x] [Refactoring](#)
+-[x] [Case Studies](#)
+-[x] [Kubernetes]
 
 ## The Legacy Monolith
 > Recap - A monolith is a large, single piece of software. It runs on a single system which has to satisfy its compute, memory, storage, and networking requirements.
@@ -84,11 +84,19 @@ During upgrades, patches or migrations of the monolith application - downtimes o
 - Amazon Elastic Container Service (ECS)
 - Azure Container Instances
 - Azure Service Fabric
-- Kubernetes
+- Kubernetes (most popular)
 - Marathon
 - Nomad
 - Docker Swarm
 
 ## Why Container Orchestrators?
-- 
+- We can manually maintain a couple of containers or write scripts for dozens of containers, however, orchestrators make things much easier for operators especially when it comes to managing hundreds and thousands of containers.
+- Containers can:
+	- Group hosts together and create a cluster
+	- Schedule containers to run on hosts in the cluster based on resources availability
+	- Enable containers in a cluster to communicate with each other regardless of the host they are deployed to in the cluster
+	- Bind containers and storage resources
+	- Allow for implementation of policies to secure access to applications running inside containers. 
+
+## Where to deploy container orchestrators?
 
